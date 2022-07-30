@@ -13,7 +13,7 @@ public class Employee {
         this.empLastName = empLastName;
     }
 
-    private static int getEmpID() {
+    public static int getEmpID() {
         return empID;
     }
 
@@ -21,11 +21,11 @@ public class Employee {
         this.empID = empID;
     }
 
-    private static String getEmpFirstName() {
+    public static String getEmpFirstName() {
         return empFirstName;
     }
 
-    private void setEmpFirstName(String empFirstName) {
+    public void setEmpFirstName(String empFirstName) {
         this.empFirstName = empFirstName;
     }
 
@@ -33,7 +33,7 @@ public class Employee {
         return empLastName;
     }
 
-    private void setEmpLastName(String empLastName) {
+    public void setEmpLastName(String empLastName) {
         this.empLastName = empLastName;
     }
 

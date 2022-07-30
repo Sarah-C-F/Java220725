@@ -6,10 +6,17 @@ import handlers.empHandlers.GetSpecificEmployeeHandler;
 
 public interface EmployeeDAO {
 
-    //create Employee Handlers
+    //create
     CreateEmployeesHandler createEmployeesHandler = new CreateEmployeesHandler();
-    //DeleteEmployeeHandler deleteEmployeeHandler = new DeleteEmployeeHandler();
+
+    //Read
     GetAllEmployeesHandler getAllEmployeesHandler = new GetAllEmployeesHandler();
     GetSpecificEmployeeHandler getSpecificEmployeeHandler = new GetSpecificEmployeeHandler();
+
+    //Update
     //UpdateEmployeeHandler updateEmployeeHandler = new UpdateEmployeeHandler();
+
+    //Delete
+    //DeleteEmployeeHandler deleteEmployeeHandler = new DeleteEmployeeHandler();
+
 }

@@ -2,6 +2,8 @@ package entities;
 
 public class Expense {
     private static int expID;
+
+    private static int empID;
     private static double expAmount;
     private static String expStatus = "pending";
 
@@ -9,8 +11,9 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(int expID, double expAmount) {
+    public Expense(int expID,int empID, double expAmount) {
         this.expID = expID;
+        this.empID = empID;
         this.expAmount = expAmount;
     }
 
@@ -38,10 +41,19 @@ public class Expense {
         this.expStatus = expStatus;
     }
 
+    public static int getEmpID() {
+        return empID;
+    }
+
+    public static void setEmpID(int empID) {
+        Expense.empID = empID;
+    }
+
     @Override
     public String toString() {
         return "Expense{" +
                 "expID=" + expID +
+                ", empID=" + empID +
                 ", expAmount=" + expAmount +
                 ", expStatus='" + expStatus + '\'' +
                 '}';
