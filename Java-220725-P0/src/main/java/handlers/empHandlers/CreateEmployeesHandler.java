@@ -9,15 +9,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class CreateEmployeesHandler implements Handler {
     @Override
-    public void handle(@NotNull Context ctx) throws Exception {
-        String body = ctx.body();
+    public void handle(@NotNull Context ctx) {
+        String json = ctx.body();
         Gson gson = new Gson();
-        Employee employee = gson.fromJson(body, Employee.class);
+        Employee employee = gson.fromJson(json, Employee.class);
+        System.out.println(employee);
+        Employee saveEmployee = App.employeeService.saveEmployee(employee);
+        String employeeJson = gson.toJson(saveEmployee);
 
-        App.employees.add(employee);
+
         ctx.status(201);
-        ctx.result("Added a new Employee");
+        ctx.result("Added a new Employee " + employeeJson );
 
-        System.out.println(App.employees);
     }
 }

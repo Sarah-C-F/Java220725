@@ -1,22 +1,22 @@
 package dao;
 
-import handlers.empHandlers.CreateEmployeesHandler;
-import handlers.empHandlers.GetAllEmployeesHandler;
-import handlers.empHandlers.GetSpecificEmployeeHandler;
+import entities.Employee;
+
+import java.util.Map;
 
 public interface EmployeeDAO {
 
     //create
-    CreateEmployeesHandler createEmployeesHandler = new CreateEmployeesHandler();
+    Employee createEmployee(Employee employee);
 
     //Read
-    GetAllEmployeesHandler getAllEmployeesHandler = new GetAllEmployeesHandler();
-    GetSpecificEmployeeHandler getSpecificEmployeeHandler = new GetSpecificEmployeeHandler();
+    Map<Integer, Employee> getAllEmployees();
+    Employee getEmployeeByID(int id);
 
     //Update
-    //UpdateEmployeeHandler updateEmployeeHandler = new UpdateEmployeeHandler();
+    Employee updateEmployee(Employee employee);
 
     //Delete
-    //DeleteEmployeeHandler deleteEmployeeHandler = new DeleteEmployeeHandler();
+    int deleteEmployee(int id);
 
 }

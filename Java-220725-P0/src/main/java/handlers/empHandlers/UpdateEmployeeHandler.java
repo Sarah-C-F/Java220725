@@ -8,28 +8,24 @@ import io.javalin.http.Handler;
 import org.jetbrains.annotations.NotNull;
 
 public class UpdateEmployeeHandler implements Handler {
+
     @Override
     public void handle(@NotNull Context ctx) throws Exception {
-        int empIndex = 0;
-        String body = ctx.body();
+        System.out.println("here");
+        String  employeeJSON = ctx.body();
         Gson gson = new Gson();
-        Employee employee = gson.fromJson(body, Employee.class);
-
-        for (Employee e: App.employees) {
-            if (e.getEmpID() == employee.getEmpID()) {
-                empIndex =(employee.getEmpID() - 1);
-
-
-                App.employees.set((empIndex), employee);
-                ctx.status(201);
-                ctx.result("updated Employee");
-
-                System.out.println(App.employees);
-            } else {
-                ctx.status(404);
-                ctx.result("employee record not found");
-            }
+        Employee employee = gson.fromJson(employeeJSON,Employee.class);
+        System.out.println(employee);
+        Employee updatedEmployee = App.employeeService.updateEmployee(employee);
+        System.out.println(updatedEmployee);
+        if (updatedEmployee.getEmpID() != 0) {
+            System.out.println("ifHandle");
+            String json = gson.toJson(updatedEmployee);
+            ctx.result(json);
+        } else {
+            System.out.println("elseHandle");
+            ctx.status(404);
+            ctx.result("Employee Record Not Found");
         }
-
     }
 }

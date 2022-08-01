@@ -1,29 +1,31 @@
 package app;
 
+import dao.EmployeeDaoLocal;
 import entities.Employee;
 import entities.Expense;
 import handlers.empHandlers.*;
 import io.javalin.Javalin;
+import services.EmployeeService;
+import services.EmployeeServiceLocal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
-    //create Employees list
-    public static List<Employee> employees = new ArrayList<>();
-    //create Expenses List
-    public static List<Expense> expenses = new ArrayList<>();
+
+    public static EmployeeService employeeService = new EmployeeServiceLocal(new EmployeeDaoLocal());
+
 
     public static void main(String[] args) {
         //add Javalin
         Javalin app = Javalin.create();
 
-        //create Employee Handlers
+        //Employee Handlers
         CreateEmployeesHandler createEmployeesHandler = new CreateEmployeesHandler();
-        //DeleteEmployeeHandler deleteEmployeeHandler = new DeleteEmployeeHandler();
+        DeleteEmployeeHandler deleteEmployeeHandler = new DeleteEmployeeHandler();
         GetAllEmployeesHandler getAllEmployeesHandler = new GetAllEmployeesHandler();
-        GetSpecificEmployeeHandler getSpecificEmployeeHandler = new GetSpecificEmployeeHandler();
-        //UpdateEmployeeHandler updateEmployeeHandler = new UpdateEmployeeHandler();
+        GetEmployeeByIDHandler getEmployeeByIDHandler = new GetEmployeeByIDHandler();
+        UpdateEmployeeHandler updateEmployeeHandler = new UpdateEmployeeHandler();
 
         //create Expense Handlers
         /*CreateExpenseHandler createExpenseHandler = new CreateExpenseHandler();
@@ -35,10 +37,10 @@ public class App {
         //call Employee Handlers
 
         app.get("/employees", getAllEmployeesHandler);
-        app.get("/employees/{empID}", getSpecificEmployeeHandler);
+        app.get("/employees/{empID}", getEmployeeByIDHandler);
         app.post("/employees", createEmployeesHandler);
-        //app.put("/employees", updateEmployeeHandler);
-        //app.delete("/employees", DeleteEmployeeHandler);
+        app.put("/employees/{empID}", updateEmployeeHandler);
+        app.delete("/employees/{empID}", deleteEmployeeHandler);
 
 
         app.start();

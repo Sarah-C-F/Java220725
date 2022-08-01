@@ -1,9 +1,9 @@
 package entities;
 
 public class Employee {
-    private static int empID;
-    private static String empFirstName;
-    private static String empLastName;
+    private int empID;
+    private String empFirstName;
+    private String empLastName;
 
     public Employee() {}
 
@@ -13,7 +13,7 @@ public class Employee {
         this.empLastName = empLastName;
     }
 
-    public static int getEmpID() {
+    public int getEmpID() {
         return empID;
     }
 
@@ -21,7 +21,7 @@ public class Employee {
         this.empID = empID;
     }
 
-    public static String getEmpFirstName() {
+    public String getEmpFirstName() {
         return empFirstName;
     }
 
@@ -29,7 +29,7 @@ public class Employee {
         this.empFirstName = empFirstName;
     }
 
-    public static String getEmpLastName() {
+    public String getEmpLastName() {
         return empLastName;
     }
 

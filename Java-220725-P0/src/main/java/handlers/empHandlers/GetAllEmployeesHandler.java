@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class GetAllEmployeesHandler implements Handler {
     @Override
-    public void handle(@NotNull Context ctx) throws Exception {
+    public void handle(@NotNull Context ctx) {
         Gson gson = new Gson();
-        String json = gson.toJson(App.employees);
+        String json = gson.toJson(App.employeeService.getAllEmployee());
         ctx.result(json);
     }
 }
