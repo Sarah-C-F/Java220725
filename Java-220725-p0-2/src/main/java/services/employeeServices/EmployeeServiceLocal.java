@@ -9,6 +9,8 @@ public class EmployeeServiceLocal implements EmployeeService {
 
     private EmployeeDAO employeeDAO;
 
+    public EmployeeServiceLocal(){}
+
     public EmployeeServiceLocal(EmployeeDAO employeeDAO) {
         this.employeeDAO = employeeDAO;
     }

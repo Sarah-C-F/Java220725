@@ -9,18 +9,32 @@ public class Expense {
     private ExpenseType expenseType;
     private int employeeID; //Foreign Key, not null
     private double expenseAmount;//check > 0
-    private Status expenseStatus = Status.PENDING; //defaults pending
+    private Status expenseStatus;
 
 
     public Expense() {
     }
 
-    public Expense(int expenseID, ExpenseType expenseType, int employeeID, double expenseAmount) {
+
+    public Expense(int expenseID, String expenseType, int employeeID, double expenseAmount, String status) {
         this.expenseID = expenseID;
-        this.expenseType = expenseType;
+        this.expenseType = ExpenseType.valueOf(expenseType);
         this.employeeID = employeeID;
         this.expenseAmount = expenseAmount;
+        this.expenseStatus = Status.valueOf(status);
     }
+
+    public Expense(int expenseID, String expenseType, int employeeID, double expenseAmount) {
+
+        this.expenseID = expenseID;
+        this.expenseType = ExpenseType.valueOf(expenseType);
+        this.employeeID = employeeID;
+        this.expenseAmount = expenseAmount;
+        this.expenseStatus = Status.PENDING;
+    }
+
+
+
 
     public int getExpenseID() {
         return expenseID;
@@ -34,8 +48,9 @@ public class Expense {
         return expenseType;
     }
 
-    public void setExpenseType(ExpenseType expenseType) {
-        this.expenseType = expenseType;
+    public void setExpenseType(String expenseType) {
+        expenseType.toUpperCase();
+        this.expenseType = ExpenseType.valueOf(expenseType);
     }
 
     public int getEmployeeID() {
@@ -58,8 +73,9 @@ public class Expense {
         return expenseStatus;
     }
 
-    public void setExpenseStatus(Status expenseStatus) {
-        this.expenseStatus = expenseStatus;
+    public void setExpenseStatus(String expenseStatus) {
+        expenseStatus.toUpperCase();
+        this.expenseStatus = Status.valueOf(expenseStatus);
     }
 
     @Override

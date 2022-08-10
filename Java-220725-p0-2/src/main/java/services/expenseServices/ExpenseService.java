@@ -2,15 +2,19 @@ package services.expenseServices;
 
 import entities.expenses.Expense;
 
+import java.util.List;
+
 public interface ExpenseService {
 
-    int createExpense (Expense expense);
+    int createExpense(Expense expense);
 
-//    Map<Integer, Employee> getAllEmployee();
-//
-//    Employee getEmployeeByID(int id);
-//
-//    int deleteEmployee(int id);
-//
-//    Employee updateEmployee(Employee employee);
+    List<Expense> getAllExpenses();
+
+    Expense getExpenseByID(int id);
+
+    int updateExpense(Expense expense);
+
+    int deleteExpense(int id);
+
+    List<Expense> getExpensesByEmployee(int id);
 }

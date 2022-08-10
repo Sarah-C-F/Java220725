@@ -13,7 +13,6 @@ public class CreateEmployeesHandler implements Handler {
         String json = ctx.body();
         Gson gson = new Gson();
         Employee employee = gson.fromJson(json, Employee.class);
-        System.out.println(employee);
         Employee saveEmployee = App.employeeService.createEmployee(employee);
         String employeeJson = gson.toJson(saveEmployee);
 
